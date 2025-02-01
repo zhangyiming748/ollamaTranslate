@@ -44,8 +44,7 @@ func GetChinese(src string) string {
 	a.Messages = append(a.Messages, h)
 	a.Messages = append(a.Messages, m)
 	log.Printf("a: %+v", a)
-	//ollamaHost := "http://ollama:11434"
-	ollamaHost := "http://127.0.0.1:11434/api/chat"
+	ollamaHost := "http://ollama:11434"
 	if current := os.Getenv("OLLAMA_HOST"); current != "" {
 		ollamaHost = current
 	}
