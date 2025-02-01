@@ -10,8 +10,10 @@ func init() {
 }
 
 func TestGetChinese(t *testing.T) {
-	ret := GetChinese("hello dear")
-	t.Log(ret)
+	ret, _ := GetChinese("Imagine that you're teasing those lips.")
+	ans := ret.Message.Content
+	prefix, suffix := splitByLastNewline(ans)
+	t.Logf("prefix = %v\tsuffix = %v\n", prefix, suffix)
 }
 func TestGetHealth(t *testing.T) {
 	os.Setenv("OLLAMA_HOST", "http://127.0.0.1:11434")
