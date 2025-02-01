@@ -1,0 +1,30 @@
+name: aiTranslate
+services:
+    mysql:
+        container_name: some-mysql
+        volumes:
+            - ./:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=163453
+        image: mysql:9.2.0
+        ports:
+            - 3307:3306
+    ollama:
+        volumes:
+            - ./ollama:/root/.ollama
+        ports:
+            - 11434:11434
+        container_name: ollama
+        image: ollama/ollama
+    api:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        container_name: api
+        ports:
+          - "8080:8080" # API 服务端口
+        depends_on:
+          - ollama
+        environment:
+          - OLLAMA_HOST=ollama:11434
+        restart: always

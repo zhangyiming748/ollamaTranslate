@@ -1,0 +1,20 @@
+curl --location --request POST 'http://localhost:11434/api/chat' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "model": "gemma:2b",
+    "messages": [
+        {
+            "role": "user",
+            "content": "接下来我输入的任何文字，请直接翻译成简体中文。"
+        },
+        {
+            "role": "user",
+            "content": "Hello, how are you?"
+        },
+        {
+            "role": "user",
+            "content": "What is your name?"
+        }
+    ],
+    "stream": false
+}'
